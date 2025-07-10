@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taschenrechner</title>
+    <link rel="stylesheet" href="style.css" />
+    <script></script>
+  </head>
+  <body>
+    <div class="container">
+      <div id="calculator">
+        <input type="number" id="display" disabled="true" />
+        <input type="number" id="input" disabled="true" />
+      </div>
+      <div class="buttons">
+        <button onclick="procent()">%</button>
+        <button onclick="clearEntry()">CE</button>
+        <button onclick="clearAll()">C</button>
+        <button onclick="back()">DEL</button>
+
+        <button onclick="division()">/</button>
+        <button onclick="multiplication()">*</button>
+        <button onclick="subtraction()">-</button>
+        <button onclick="multiplication()">+</button>
+
+        <button onclick="addNumber(9)">9</button>
+        <button onclick="addNumber(8)">8</button>
+        <button onclick="addNumber(7)">7</button>
+        <button onclick="addNumber(6)">6</button>
+
+        <button onclick="addNumber(5)">5</button>
+        <button onclick="addNumber(4)">4</button>
+        <button onclick="addNumber(3)">3</button>
+        <button onclick="addNumber(2)">2</button>
+
+        <button onclick="addNumber(1)">1</button>
+        <button onclick="addNumber(0)">0</button>
+        <button onclick="dot()">.</button>
+        <button onclick="result()" class="result">=</button>
+      </div>
+    </div>
+    <div class="history"></div>
+  </body>
+</html>
