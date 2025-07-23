@@ -1,24 +1,96 @@
 let currentInput = 0;
+let previousInput = 0;
+let operator = "+";
+let history = "";
 
 function getNumber(zahl) {
-  console.log(currentInput);
   currentInput = currentInput * 10 + zahl;
-  console.log(currentInput);
-  updateCurrentInput();
+  updateCurrentInput(currentInput);
 }
 
-function add() {}
+function add() {
+  performOperator();
+  operator = "+";
+  updatePreviousInput();
+}
 
-function subtraction() {}
+function subtract() {
+  performOperator();
+  operator = "-";
+  updatePreviousInput();
+}
 
-function multiplication() {}
+function multiply() {
+  performOperator();
+  operator = "*";
+  updatePreviousInput();
+}
 
-function division() {}
+function divide() {
+  performOperator();
+  operator = "/";
+  updatePreviousInput();
+}
 
-function clearAll() {}
+function result() {
+  performOperator();
+  operator = "=";
+  updatePreviousInput();
+  updateCurrentInput(previousInput);
+}
 
-function result() {}
+function performOperator() {
+  let currentResult = 0;
 
-function updateCurrentInput() {
-  document.getElementById("output").innerHTML = currentInput;
+  if (operator === "+") {
+    currentResult = previousInput + currentInput;
+  } else if (operator === "-") {
+    currentResult = previousInput - currentInput;
+  } else if (operator === "*") {
+    currentResult = previousInput * currentInput;
+  } else if (operator === "/") {
+    currentResult = previousInput / currentInput;
+  } else if (operator === "=") {
+    currentResult = currentInput;
+  }
+
+  let historyString =
+    "<p>" +
+    previousInput +
+    " " +
+    operator +
+    " " +
+    currentInput +
+    " = " +
+    currentResult +
+    "</p>";
+
+  history = historyString + history;
+  updateHistory();
+
+  previousInput = currentResult;
+  currentInput = 0;
+  updateCurrentInput("");
+}
+
+function clearAll() {
+  currentInput = 0;
+  previousInput = 0;
+  operator = "+";
+  history = "";
+  updateCurrentInput("");
+  updatePreviousInput();
+  updateHistory();
+}
+
+function updateCurrentInput(text) {
+  document.getElementById("output").innerHTML = text;
+}
+
+function updatePreviousInput() {
+  document.getElementById("display").innerHTML = previousInput + " " + operator;
+}
+
+function updateHistory() {
+  document.getElementById("history").innerHTML = history;
 }
